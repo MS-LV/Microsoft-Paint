@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build --base-href=/Angular_MS-Paint/",
     "watch": "ng build --watch --configuration development --base-href=/Angular_MS-Paint/",
     "test": "ng test"
   },
