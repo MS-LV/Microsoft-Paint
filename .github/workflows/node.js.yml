@@ -32,4 +32,4 @@ jobs:
         with:
           # branch: gh-pages # by default
           ssh-key: ${{ secrets.DEPLOY_KEY_SECRET }}
-          folder: dist/Microsoft-Paint
+          folder: dist
