@@ -34,4 +34,4 @@ jobs:
       with:
         # branch: gh-pages # by default
         ssh-key: ${{ secrets.DEPLOY_KEY_SECRET }}
-        folder: dist/Angular_MS-Paint
+        folder: dist/Microsoft-Paint
