@@ -1,4 +1,4 @@
-<div class="wrapper">
+<div class="wrapper flex-col-sb">
   <header class="header">
     <div class="header__tools flex-wrap">
       <div *ngFor="let img of toolsImages" #tool class="tool"
@@ -23,8 +23,8 @@
         </button>
       </div>
     </div>
-    <div class="header__colors">
-      <div class="header__primary-colors">
+    <div class="header__colors flex-sb">
+      <div class="header__primary-colors flex-sb">
         <div class="current">
           <div class="color--header" [style.background-color]="color"></div>
           <span>Color 1</span>
