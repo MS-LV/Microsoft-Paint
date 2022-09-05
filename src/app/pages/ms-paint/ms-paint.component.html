@@ -1,0 +1,82 @@
+<div class="wrapper">
+  <header class="header">
+    <div class="header__tools flex-wrap">
+      <div *ngFor="let img of toolsImages" #tool class="tool"
+           [ngClass]="{'active': selectToolButton.includes(img)}"
+           (click)="toolButtons(img)">
+        <img src="{{urlToolsIcons}}/{{img}}">
+      </div>
+    </div>
+    <div class="header__figures flex-wrap">
+      <div *ngFor="let figure of figuresImages" class="figure" title="{{figure}}">
+        <img src="{{urlFigures}}/{{figure}}.svg">
+      </div>
+    </div>
+    <div class="header__thickness">
+      <img src="assets/icons/ms-paint/another/line-thickness.svg" (click)="thicknessButton()">
+      <div class="thickness" *ngIf="isShowLines">
+        <button *ngFor="let size of thicknessSizes let idx = index"
+                #thickness
+                [ngClass]="{active:activeThickness == idx}"
+                (click)="thicknessLine(size, idx)">
+          <div [style.height]="size+'px'"></div>
+        </button>
+      </div>
+    </div>
+    <div class="header__colors">
+      <div class="header__primary-colors">
+        <div class="current">
+          <div class="color--header" [style.background-color]="color"></div>
+          <span>Color 1</span>
+        </div>
+        <div class="default"
+             [ngClass]="{'active__default_color': isClickPrimary}">
+          <div class="color--header" (click)="defaultColor()"
+               [style.background-color]="primaryColor"></div>
+          <span>Color 2</span>
+        </div>
+      </div>
+      <div class="header__colors-block flex-wrap">
+        <button *ngFor="let color of listColors"
+                [value]="color" class="color"
+                (click)="setColor(color)"
+                [style.background-color]="color"></button>
+      </div>
+    </div>
+    <div class="header__palette flex-column">
+      <input #inputColor [(ngModel)]="color" name="" type="color" value="#000000">
+    </div>
+  </header>
+  <main class="main">
+    <div #parentCanvas
+         (mouseleave)="contentMouseLeave()"
+         (mousemove)="contentMouseMove(canvasTag, $event)"
+         [ngClass]="{eraser:selectToolButton.includes('eraser')}"
+         [ngStyle]="cursorRender()"
+         class="main__workspace">
+
+      <canvas #canvasTag></canvas>
+    </div>
+  </main>
+  <footer class="footer">
+    <div class="footer__mousemove-position">
+      <img src="assets/icons/ms-paint/footer/zoom_out.svg">
+      <span>{{mouseMovePosition.x}}x{{mouseMovePosition.y}}</span>
+    </div>
+    <div class="footer__figure-size">
+      <img src="assets/icons/ms-paint/footer/resize-square.svg">
+      <span>100x100</span>
+    </div>
+    <div class="footer__canvas-size">
+      <img src="assets/icons/ms-paint/footer/resize-square.svg">
+      <span>{{canvasTag.offsetWidth}}x{{canvasTag.offsetHeight}}</span>
+    </div>
+    <div class="footer__space"></div>
+    <div class="footer__zoom">
+      <div class="zoom-percent">{{zoomRange.value}}%</div>
+      <div class="zoom-minus" (click)="zoomPlusMinus(0)">-</div>
+      <input #zoomRange (change)="changeRange(zoomRange)" type="range" value="100" min="1" max="200">
+      <div class="zoom-plus" (click)="zoomPlusMinus(1)">+</div>
+    </div>
+  </footer>
+</div>

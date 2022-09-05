@@ -1,0 +1,27 @@
+/* You can add global styles to this file, and also import other style files */
+
+html{
+  width: 100vw;
+  overflow: hidden;
+}
+body{
+  width: 100%;
+  overflow: auto;
+}
+html, body{
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  display: block;
+  box-sizing: border-box;
+}
+*{
+  font-family: Helvetica, serif;
+}
+.link{
+  color: blue;
+  cursor: pointer;
+  &:hover{
+    text-decoration: underline;
+  }
+}
